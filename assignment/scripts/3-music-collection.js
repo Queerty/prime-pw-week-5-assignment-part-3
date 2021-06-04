@@ -31,9 +31,9 @@ return record;
   }//end add to collection function
 console.log(addToCollection("Revolver", "The Beatles", "1966"));
 
-console.log(addToCollection("test", "Testing", "1990"));
+console.log(addToCollection("Punisher", "Phoebe Bridgers", "2020"));
 
-addToCollection("bruce","Bruce Springsteen", "2021");
+addToCollection("Stranger in the Alps","Phoebe Bridgers", "2017");
 
 console.log(collection);
 
@@ -71,21 +71,21 @@ function findByArtist(_artist){
     }//end if conditional
   }//end for loop
 }//end find function
-console.log(findByArtist("Goo Goo Dolls"));
 
 //This one returns the object with the matching artist... have to test
-//with multiple artists now...
+//with multiple artists now... didn't work only returned first result..
+//ok fixed it by moving the return results after the for loop
 function findByArtist(_artist){
   let results = [];
   for (x of collection){
     if(_artist== x.artist) {
-      results.push(x)
-      return results;
+      results.push(x);
     }//end if conditional
   }//end for loop
+  return results;
 }//end find function
-console.log(findByArtist("Testing"));
-/* this didn't work... returned "1" -> index? quantity? tbd
+console.log(findByArtist("Phoebe Bridgers"));
+/* this attempt didn't work... returned "1" -> index? quantity? tbd
 function findByArtist(artist){
   artist = album.artist;
   let results = [];
@@ -97,3 +97,4 @@ function findByArtist(artist){
 }//end findByArtist function
 console.log(findByArtist("Testing"));
 */
+console.log(findByArtist("Goo Goo Dolls"));
