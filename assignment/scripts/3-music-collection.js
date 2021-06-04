@@ -29,11 +29,23 @@ record = {
 
 return record;
   }//end add to collection function
-console.log(addToCollection("Revolver", "The Beatles", "1966"));
+
+addToCollection("The Best of Luck Club","Alex Lahey", "2019");
+
+console.log(addToCollection("The Body, The Blood, The Machine", "The Thermals", "2006"));
 
 console.log(addToCollection("Punisher", "Phoebe Bridgers", "2020"));
 
 addToCollection("Stranger in the Alps","Phoebe Bridgers", "2017");
+
+addToCollection("Sour","Olivia Rodrigo", "2021");
+
+addToCollection("Brat","Nnamdi", "2020");
+
+addToCollection("At the Party With My Brown Friends","Black Belt Eagle Scout", "2019");
+
+
+
 
 console.log(collection);
 
@@ -82,6 +94,7 @@ function findByArtist(_artist){
       results.push(x);
     }//end if conditional
   }//end for loop
+  if results =
   return results;
 }//end find function
 console.log(findByArtist("Phoebe Bridgers"));
@@ -97,4 +110,4 @@ function findByArtist(artist){
 }//end findByArtist function
 console.log(findByArtist("Testing"));
 */
-console.log(findByArtist("Goo Goo Dolls"));
+console.log(findByArtist("Goo Goo Dolls")); //returns an empty array
