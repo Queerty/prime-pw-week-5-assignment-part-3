@@ -94,7 +94,6 @@ function findByArtist(_artist){
       results.push(x);
     }//end if conditional
   }//end for loop
-  if results =
   return results;
 }//end find function
 console.log(findByArtist("Phoebe Bridgers"));
