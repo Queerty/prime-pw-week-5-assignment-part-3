@@ -14,6 +14,9 @@ console.log('***** Music Collection *****')
 */
 let collection = [];
 let record;
+let title;
+let artist;
+let yearPublished;
 function addToCollection(title, artist, yearPublished){
 
 record = {
@@ -30,4 +33,67 @@ console.log(addToCollection("Revolver", "The Beatles", "1966"));
 
 console.log(addToCollection("test", "Testing", "1990"));
 
+addToCollection("bruce","Bruce Springsteen", "2021");
+
 console.log(collection);
+
+/*- Add a function named `showCollection`. This function should:
+  - Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
+  - Console.log the number of items in the array.
+  - Loop over the array and console.log each album's information formatted like: `TITLE by ARTIST, published in YEAR`.
+- Test the `showCollection` function. */
+function showCollection(array){
+  console.log(array.length);
+for(album of array){
+      console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
+    }//end for loop
+    };//end of showCollection function
+showCollection(collection);
+
+/*- Add a function named `findByArtist`. This function should:
+  - Take in `artist` (a string) parameter
+  - Create an array to hold any results, empty to start
+  - Loop through the `collection` and add any objects with a matching artist to the array.
+  - Return the array with the matching results. If no results are found, return an empty array.
+
+- Test the `findByArtist` function.
+Make sure to test with an artist you know is in the collection,
+as well as an artist you know is not in your collection.
+Check that for artists with multiple matches, all are found.
+*/
+//this one returns the matching artist...
+function findByArtist(_artist){
+  let results = [];
+  for (x of collection){
+    if(_artist== x.artist) {
+      results.push(_artist)
+      return results;
+    }//end if conditional
+  }//end for loop
+}//end find function
+console.log(findByArtist("Goo Goo Dolls"));
+
+//This one returns the object with the matching artist... have to test
+//with multiple artists now...
+function findByArtist(_artist){
+  let results = [];
+  for (x of collection){
+    if(_artist== x.artist) {
+      results.push(x)
+      return results;
+    }//end if conditional
+  }//end for loop
+}//end find function
+console.log(findByArtist("Testing"));
+/* this didn't work... returned "1" -> index? quantity? tbd
+function findByArtist(artist){
+  artist = album.artist;
+  let results = [];
+  for(let x of collection){
+    if(x.artist == artist){
+      return results.push(artist);
+    }//end if condition
+  }//end for loop
+}//end findByArtist function
+console.log(findByArtist("Testing"));
+*/
