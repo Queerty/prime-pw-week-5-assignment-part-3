@@ -18,7 +18,6 @@ let title;
 let artist;
 let yearPublished;
 function addToCollection(title, artist, yearPublished){
-
 record = {
   title,
   artist,
@@ -26,7 +25,6 @@ record = {
 };//end new object
     collection.push(record);
     console.log(collection);
-
 return record;
   }//end add to collection function
 
@@ -44,6 +42,7 @@ addToCollection("Brat","Nnamdi", "2020");
 
 addToCollection("At the Party With My Brown Friends","Black Belt Eagle Scout", "2019");
 
+addToCollection("Mother of My Children","Black Belt Eagle Scout", "2018");
 
 
 
@@ -74,23 +73,23 @@ as well as an artist you know is not in your collection.
 Check that for artists with multiple matches, all are found.
 */
 //this one returns the matching artist...
-function findByArtist(_artist){
+/*function findByArtist(_artist){
   let results = [];
-  for (x of collection){
-    if(_artist== x.artist) {
+  for (let x of collection){
+    if(_artist.toLowerCase()== x.artist.toLowerCase()) {
       results.push(_artist)
       return results;
     }//end if conditional
   }//end for loop
-}//end find function
+}//end find function*/
 
 //This one returns the object with the matching artist... have to test
 //with multiple artists now... didn't work only returned first result..
-//ok fixed it by moving the return results after the for loop
+//ok fixed it by moving the return results to after the for loop
 function findByArtist(_artist){
   let results = [];
-  for (x of collection){
-    if(_artist== x.artist) {
+  for (let x of collection){
+    if(_artist.toLowerCase()== x.artist.toLowerCase()) {
       results.push(x);
     }//end if conditional
   }//end for loop
@@ -110,3 +109,7 @@ function findByArtist(artist){
 console.log(findByArtist("Testing"));
 */
 console.log(findByArtist("Goo Goo Dolls")); //returns an empty array
+console.log(findByArtist("Black Belt"));//no match returns empty array
+console.log(findByArtist("Black Belt Eagle Scout"));//returns 2 albums by artist
+console.log(findByArtist("Black belt eagle scout")); //FIXED with toLowerCase //returns empty array
+//needs exact match to return array... not so practical...
