@@ -57,21 +57,17 @@ for(album of array){
     }//end for loop
     return true
     };//end of showCollection function
+
+//honestly not entirely sure what to return from that function since
+//it is console logging each title/artist/year
+
 showCollection(collection);
 
-/*- Add a function named `findByArtist`. This function should:
-  - Take in `artist` (a string) parameter
-  - Create an array to hold any results, empty to start
-  - Loop through the `collection` and add any objects with a matching artist to the array.
-  - Return the array with the matching results. If no results are found, return an empty array.
+//- Add a function named `findByArtist`
 
-- Test the `findByArtist` function.
-Make sure to test with an artist you know is in the collection,
-as well as an artist you know is not in your collection.
-Check that for artists with multiple matches, all are found.
-*/
-//this one returns the matching artist...
-/*function findByArtist(_artist){
+//this one returns the matching artist but not the whole object...
+/*
+function findByArtist(_artist){
   let results = [];
   for (let x of collection){
     if(_artist.toLowerCase()== x.artist.toLowerCase()) {
@@ -81,9 +77,10 @@ Check that for artists with multiple matches, all are found.
   }//end for loop
 }//end find function*/
 
-//This one returns the object with the matching artist... have to test
-//with multiple artists now... didn't work only returned first result..
-//ok fixed it by moving the return results to after the for loop
+//This one returns the object with the matching artist...
+//have to test w/ multiple artists now...
+//didn't work only returned first result..
+//ok fixed it by moving the return to after the for loop
 function findByArtist(_artist){
   let results = [];
   for (let x of collection){
@@ -93,8 +90,12 @@ function findByArtist(_artist){
   }//end for loop
   return results;
 }//end find function
+
+console.log(`Expect to see two albums returned:`);
 console.log(findByArtist("Phoebe Bridgers"));
-/* this attempt didn't work... returned "1" -> index? quantity? tbd
+
+
+/* this first attempt didn't work... returned "1" -> index? quantity? tbd
 function findByArtist(artist){
   artist = album.artist;
   let results = [];
@@ -106,8 +107,14 @@ function findByArtist(artist){
 }//end findByArtist function
 console.log(findByArtist("Testing"));
 */
+
+
+console.log(`Expect to see an empty array, artist not in collection:`);
 console.log(findByArtist("Goo Goo Dolls")); //returns an empty array
+console.log(`Expect to see an empty array, artist not exact match:`);
 console.log(findByArtist("Black Belt"));//no match returns empty array
+
+console.log(`Expect to see same results for the next two searches:`);
 console.log(findByArtist("Black Belt Eagle Scout"));//returns 2 albums by artist
 console.log(findByArtist("Black belt eagle scout")); //FIXED with toLowerCase //returns empty array
 //needs exact match to return array... not so practical...
@@ -116,7 +123,6 @@ console.log(findByArtist("Black belt eagle scout")); //FIXED with toLowerCase //
 
 let searchArtist;
 let searchYear;
-
 let searchCriteria = {
   artist: searchArtist,
   yearPublished: searchYear,
@@ -127,7 +133,6 @@ function search({artist: searchArtist, yearPublished: searchYear}){
 
     if(searchArtist.toLowerCase() == x.artist.toLowerCase() && searchYear == x.yearPublished) {
       searchResult.push(x);
-
 }//end search if conditional
 }//end for loop
 return searchResult;
@@ -136,7 +141,7 @@ return searchResult;
 console.log(`Expect to see Black Belt Eagle Scouts album from 2019:`);
 console.log(search({artist: "Black Belt Eagle Scout", yearPublished: 2019}));
 //testing a known artist and year match
-console.log(`Expect to see an empty array:`);
+console.log(`Expect to see an empty array because artist not found:`);
 console.log(search({artist: "Test", yearPublished: 1990}));//should return empty
 
 console.log(`Expect to see The Thermals album from 2006:`);
