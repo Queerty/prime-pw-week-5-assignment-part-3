@@ -13,15 +13,12 @@ console.log('***** Music Collection *****')
   - After all are added, console.log the `collection` array.
 */
 let collection = [];
-let record;
-let title;
-let artist;
-let yearPublished;
+
 function addToCollection(title, artist, yearPublished){
-record = {
-  title,
-  artist,
-  yearPublished
+let record = {
+  title: title,
+  artist: artist,
+  yearPublished: yearPublished
 };//end new object
     collection.push(record);
     console.log(collection);
@@ -58,6 +55,7 @@ function showCollection(array){
 for(album of array){
       console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
     }//end for loop
+    return true
     };//end of showCollection function
 showCollection(collection);
 
@@ -113,3 +111,35 @@ console.log(findByArtist("Black Belt"));//no match returns empty array
 console.log(findByArtist("Black Belt Eagle Scout"));//returns 2 albums by artist
 console.log(findByArtist("Black belt eagle scout")); //FIXED with toLowerCase //returns empty array
 //needs exact match to return array... not so practical...
+
+//Stretch
+
+let searchArtist;
+let searchYear;
+
+let searchCriteria = {
+  artist: searchArtist,
+  yearPublished: searchYear,
+};
+function search({artist: searchArtist, yearPublished: searchYear}){
+  let searchResult = [];
+  for (let x of collection){
+
+    if(searchArtist.toLowerCase() == x.artist.toLowerCase() && searchYear == x.yearPublished) {
+      searchResult.push(x);
+
+}//end search if conditional
+}//end for loop
+return searchResult;
+}
+
+console.log(`Expect to see Black Belt Eagle Scouts album from 2019:`);
+console.log(search({artist: "Black Belt Eagle Scout", yearPublished: 2019}));
+//testing a known artist and year match
+console.log(`Expect to see an empty array:`);
+console.log(search({artist: "Test", yearPublished: 1990}));//should return empty
+
+console.log(`Expect to see The Thermals album from 2006:`);
+
+console.log(search({artist: "the thermals", yearPublished: 2006}));
+//should still return object
